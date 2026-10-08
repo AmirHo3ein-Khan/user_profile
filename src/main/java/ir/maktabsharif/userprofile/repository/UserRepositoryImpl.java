@@ -1,22 +1,22 @@
 package ir.maktabsharif.userprofile.repository;
 
-import ir.maktabsharif.repository.BaseRepositoryImpl;
 import ir.maktabsharif.userprofile.exception.UserNotFoundException;
 import ir.maktabsharif.userprofile.model.User;
 import ir.maktabsharif.userprofile.model.UserRole;
 import ir.maktabsharif.userprofile.model.queryresult.ExistEmail;
 import ir.maktabsharif.userprofile.model.queryresult.ExistUsername;
-import ir.maktabsharif.util.JpaUtil;
+import ir.maktabsharif.userprofile.repository.base.BaseRepositoryImpl;
+import ir.maktabsharif.userprofile.util.JpaUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import java.util.Optional;
 
-public class UserRepositoryImpl extends BaseRepositoryImpl<User, Long> implements UserRepository {
-    @Override
-    protected Class<User> getClassName() {
-        return User.class;
+public class UserRepositoryImpl extends BaseRepositoryImpl<User> implements UserRepository {
+    public UserRepositoryImpl() {
+        super(User.class);
     }
+
 
     @Override
     public Optional<User> findUserByUsername(String username) {
@@ -62,5 +62,15 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<User, Long> implement
         return em.createQuery("from UserRole ur where ur.role =: roleName ", UserRole.class)
                 .setParameter("roleName", roleName)
                 .getResultList().get(0);
+    }
+
+    @Override
+    protected String getTableName() {
+        return "User";
+    }
+
+    @Override
+    protected void updateEntity(User entity) {
+
     }
 }

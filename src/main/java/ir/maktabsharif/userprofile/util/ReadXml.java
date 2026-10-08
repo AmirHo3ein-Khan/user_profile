@@ -26,7 +26,7 @@ public class ReadXml {
 
     public static void readXml() {
         try {
-            File file = new File("D:\\UserProfile\\src\\main\\resources\\application_config.xml");
+            File file = new File("/home/amirh-dev/IdeaProjects/user_profile/src/main/resources/application_config.xml");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document doc = documentBuilder.parse(file);

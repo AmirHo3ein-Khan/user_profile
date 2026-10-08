@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(SignupRequestDto requestDto) throws NoSuchAlgorithmException {
         String hashedPass = BCryptPasswordEncoder.encodeBcryptPassword(requestDto.getPassword());
-        userRepository.save(User.builder()
+        userRepository.create(User.builder()
                 .username(requestDto.getUsername())
                 .password(hashedPass)
                 .email(requestDto.getEmail())

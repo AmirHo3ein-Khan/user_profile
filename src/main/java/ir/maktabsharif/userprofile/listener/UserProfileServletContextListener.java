@@ -4,19 +4,19 @@ import ir.maktabsharif.userprofile.model.Permission;
 import ir.maktabsharif.userprofile.model.User;
 import ir.maktabsharif.userprofile.model.UserRole;
 import ir.maktabsharif.userprofile.security.BCryptPasswordEncoder;
+import ir.maktabsharif.userprofile.util.JpaUtil;
 import ir.maktabsharif.userprofile.util.ReadXml;
-import ir.maktabsharif.util.JpaUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
-import java.util.List;
 
 @WebListener
 public class UserProfileServletContextListener implements ServletContextListener {
@@ -43,7 +43,7 @@ public class UserProfileServletContextListener implements ServletContextListener
                     .setParameter("role", "admin")
                     .getSingleResult();
 
-            File inputImage = new File("D:\\UserProfile\\src\\main\\resources\\AdminPicture.png");
+            File inputImage = new File("/home/amirh-dev/IdeaProjects/user_profile/src/main/resources/AdminPicture.png");
             byte [] encodeImage;
             try {
                 encodeImage = Base64.getEncoder().encode(Files.readAllBytes(inputImage.toPath()));

@@ -116,8 +116,10 @@
                     <div class="card-footer text-center">
                         <a href="users" style="color: #52a883" type="submit" >See all users</a>
                     </div>
-                    <%}
-                    }%>
+                    <%
+                            }
+                        }
+                    %>
                 </div>
 
             </div>

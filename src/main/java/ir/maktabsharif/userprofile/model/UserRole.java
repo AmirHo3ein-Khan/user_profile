@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import ir.maktabsharif.model.BaseModel;
 
-import javax.persistence.*;
+
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
